@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="es" data-theme="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Scanlation — Traducciones</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@400;600;800&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- HEADER -->
+  <header class="site-header">
+    <a href="index.html" class="logo">
+      <span class="logo-jp">翻訳</span>
+      <span class="logo-text">Scanlation</span>
+    </a>
+    <nav class="nav-links">
+      <a href="index.html" class="nav-link active">Inicio</a>
+      <a href="#mangas" class="nav-link">Mangas</a>
+      <a href="#about" class="nav-link">Acerca</a>
+    </nav>
+    <button class="theme-toggle" id="themeToggle" aria-label="Cambiar tema">
+      <span class="theme-icon sun">☀</span>
+      <span class="theme-icon moon">◗</span>
+    </button>
+  </header>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-content">
+      <p class="hero-eyebrow">Traducciones al español</p>
+      <h1 class="hero-title">Manga<br /><em>para todos.</em></h1>
+      <p class="hero-sub">Traducciones hechas con cuidado, respetando el original.</p>
+    </div>
+    <div class="hero-deco" aria-hidden="true">
+      <span class="deco-char">漫</span>
+      <span class="deco-char">画</span>
+    </div>
+  </section>
+
+  <!-- MANGA GRID -->
+  <main id="mangas" class="manga-section">
+    <h2 class="section-title">Proyectos</h2>
+
+    <div class="manga-grid" id="mangaGrid">
+
+      <!-- Card ejemplo 1 -->
+      <article class="manga-card">
+        <div class="manga-cover placeholder-cover">
+          <span class="placeholder-text">Sin portada</span>
+        </div>
+        <div class="manga-info">
+          <span class="manga-status status-active">En curso</span>
+          <h3 class="manga-title">Título del Manga</h3>
+          <p class="manga-author">Autor · Género</p>
+          <p class="manga-desc">Descripción breve del manga. Edítala en el archivo <code>data.js</code>.</p>
+          <div class="manga-meta">
+            <span>12 capítulos</span>
+            <span>Actualizado: hoy</span>
+          </div>
+          <a href="manga.html" class="btn-primary">Leer →</a>
+        </div>
+      </article>
+
+      <!-- Card ejemplo 2 -->
+      <article class="manga-card">
+        <div class="manga-cover placeholder-cover">
+          <span class="placeholder-text">Sin portada</span>
+        </div>
+        <div class="manga-info">
+          <span class="manga-status status-hiatus">En pausa</span>
+          <h3 class="manga-title">Otro Manga</h3>
+          <p class="manga-author">Autor · Género</p>
+          <p class="manga-desc">Descripción breve del segundo proyecto de traducción.</p>
+          <div class="manga-meta">
+            <span>5 capítulos</span>
+            <span>Actualizado: hace 1 sem.</span>
+          </div>
+          <a href="manga.html" class="btn-primary">Leer →</a>
+        </div>
+      </article>
+
+      <!-- Card ejemplo 3 -->
+      <article class="manga-card">
+        <div class="manga-cover placeholder-cover">
+          <span class="placeholder-text">Sin portada</span>
+        </div>
+        <div class="manga-info">
+          <span class="manga-status status-complete">Completo</span>
+          <h3 class="manga-title">Tercer Manga</h3>
+          <p class="manga-author">Autor · Género</p>
+          <p class="manga-desc">Este proyecto ya fue completado en su totalidad.</p>
+          <div class="manga-meta">
+            <span>30 capítulos</span>
+            <span>Finalizado</span>
+          </div>
+          <a href="manga.html" class="btn-primary">Leer →</a>
+        </div>
+      </article>
+
+    </div>
+  </main>
+
+  <!-- ABOUT -->
+  <section id="about" class="about-section">
+    <div class="about-inner">
+      <h2 class="section-title">Acerca del proyecto</h2>
+      <p>Este es un proyecto de traducción amateur hecho con amor. No perseguimos fines comerciales; solo queremos hacer accesibles estas historias para lectores hispanohablantes.</p>
+      <p>Si quieres apoyar al autor original, compra el manga oficial donde esté disponible.</p>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="site-footer">
+    <p>Scanlation · Traducciones al español · <span id="year"></span></p>
+    <p class="footer-small">Proyecto fan sin fines de lucro.</p>
+  </footer>
+
+  <script src="main.js"></script>
+</body>
+</html>

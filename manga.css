@@ -1,0 +1,156 @@
+/* ─── BREADCRUMB ─────────────────────────────────────────────── */
+.breadcrumb {
+  padding: 0.9rem clamp(1.5rem, 5vw, 4rem);
+  font-size: 0.78rem;
+  color: var(--text-muted);
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+  border-bottom: 1px solid var(--border);
+}
+
+.breadcrumb a {
+  color: var(--text-muted);
+  text-decoration: none;
+  transition: color var(--transition);
+}
+
+.breadcrumb a:hover { color: var(--accent); }
+
+/* ─── MANGA DETAIL ──────────────────────────────────────────── */
+.manga-detail {
+  display: grid;
+  grid-template-columns: 220px 1fr;
+  gap: 3rem;
+  padding: clamp(2rem, 6vw, 4rem) clamp(1.5rem, 5vw, 4rem);
+  align-items: start;
+}
+
+@media (max-width: 600px) {
+  .manga-detail {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+  .detail-placeholder { aspect-ratio: 2/3; max-width: 180px; }
+}
+
+.detail-cover {
+  position: sticky;
+  top: 80px;
+}
+
+.detail-placeholder {
+  width: 100%;
+  aspect-ratio: 2/3;
+  border-radius: var(--radius);
+  border: 1px solid var(--border);
+}
+
+.detail-info {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.detail-title {
+  font-size: clamp(2rem, 5vw, 3.2rem);
+  letter-spacing: -0.03em;
+  line-height: 1.1;
+}
+
+.detail-author {
+  font-size: 0.85rem;
+  color: var(--text-muted);
+}
+
+.detail-desc {
+  color: var(--text-muted);
+  font-size: 0.92rem;
+  line-height: 1.75;
+  max-width: 540px;
+  margin-top: 0.25rem;
+}
+
+.detail-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-top: 0.5rem;
+}
+
+.tag {
+  font-size: 0.72rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  padding: 0.25em 0.75em;
+  border: 1px solid var(--border);
+  border-radius: 2px;
+  color: var(--text-muted);
+  transition: border-color var(--transition), color var(--transition);
+}
+
+.tag:hover {
+  border-color: var(--accent);
+  color: var(--accent);
+}
+
+/* ─── CHAPTER LIST ──────────────────────────────────────────── */
+.chapter-section {
+  padding: clamp(2rem, 5vw, 3.5rem) clamp(1.5rem, 5vw, 4rem);
+  border-top: 1px solid var(--border);
+}
+
+.chapter-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+.chapter-item {
+  border-bottom: 1px solid var(--border);
+}
+
+.chapter-link {
+  display: grid;
+  grid-template-columns: 90px 1fr auto;
+  align-items: center;
+  gap: 1rem;
+  padding: 0.9rem 0.5rem;
+  text-decoration: none;
+  color: var(--text);
+  transition: background var(--transition), padding-left var(--transition);
+  border-radius: var(--radius);
+}
+
+.chapter-link:hover {
+  background: var(--bg-card);
+  padding-left: 1rem;
+}
+
+.chapter-num {
+  font-family: 'Shippori Mincho', serif;
+  font-weight: 800;
+  font-size: 0.9rem;
+  color: var(--accent);
+  flex-shrink: 0;
+}
+
+.chapter-name {
+  font-size: 0.9rem;
+  font-weight: 400;
+}
+
+.chapter-date {
+  font-size: 0.75rem;
+  color: var(--text-muted);
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+@media (max-width: 480px) {
+  .chapter-link {
+    grid-template-columns: 75px 1fr;
+  }
+  .chapter-date { display: none; }
+}

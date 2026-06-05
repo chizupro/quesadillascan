@@ -1,0 +1,462 @@
+/* ─── RESET & BASE ─────────────────────────────────────────── */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+/* ─── TOKENS ────────────────────────────────────────────────── */
+:root {
+  --accent:       #c8a84b;
+  --accent-dim:   #a8883a;
+  --accent-glow:  rgba(200, 168, 75, 0.15);
+
+  /* dark (default) */
+  --bg:           #0d0d0d;
+  --bg-card:      #141414;
+  --bg-hover:     #1a1a1a;
+  --border:       rgba(255,255,255,0.07);
+  --text:         #e8e4dc;
+  --text-muted:   #787068;
+  --text-faint:   #3a3530;
+  --deco-color:   rgba(200,168,75,0.04);
+
+  --radius:       6px;
+  --transition:   0.22s ease;
+}
+
+[data-theme="light"] {
+  --bg:           #f5f3ef;
+  --bg-card:      #ffffff;
+  --bg-hover:     #f0ede8;
+  --border:       rgba(0,0,0,0.08);
+  --text:         #1a1714;
+  --text-muted:   #7a736a;
+  --text-faint:   #d8d0c8;
+  --deco-color:   rgba(200,168,75,0.06);
+}
+
+/* ─── TYPOGRAPHY ────────────────────────────────────────────── */
+html { font-size: 16px; scroll-behavior: smooth; }
+
+body {
+  font-family: 'DM Sans', sans-serif;
+  font-weight: 300;
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.65;
+  transition: background var(--transition), color var(--transition);
+  min-height: 100vh;
+}
+
+h1, h2, h3 {
+  font-family: 'Shippori Mincho', serif;
+  font-weight: 800;
+  line-height: 1.15;
+}
+
+code {
+  font-size: 0.82em;
+  background: var(--accent-glow);
+  color: var(--accent);
+  padding: 0.1em 0.35em;
+  border-radius: 3px;
+}
+
+/* ─── HEADER ────────────────────────────────────────────────── */
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+  padding: 0 clamp(1.5rem, 5vw, 4rem);
+  height: 64px;
+  background: var(--bg);
+  border-bottom: 1px solid var(--border);
+  transition: background var(--transition), border-color var(--transition);
+}
+
+.logo {
+  display: flex;
+  align-items: baseline;
+  gap: 0.5rem;
+  text-decoration: none;
+  color: var(--text);
+}
+
+.logo-jp {
+  font-family: 'Shippori Mincho', serif;
+  font-size: 1.4rem;
+  color: var(--accent);
+  letter-spacing: -0.02em;
+}
+
+.logo-text {
+  font-family: 'Shippori Mincho', serif;
+  font-weight: 800;
+  font-size: 1.05rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.nav-links {
+  display: flex;
+  gap: 2rem;
+  margin-left: auto;
+}
+
+.nav-link {
+  text-decoration: none;
+  color: var(--text-muted);
+  font-size: 0.875rem;
+  font-weight: 400;
+  letter-spacing: 0.04em;
+  transition: color var(--transition);
+  position: relative;
+}
+
+.nav-link::after {
+  content: '';
+  position: absolute;
+  bottom: -3px;
+  left: 0;
+  width: 0;
+  height: 1px;
+  background: var(--accent);
+  transition: width var(--transition);
+}
+
+.nav-link:hover,
+.nav-link.active {
+  color: var(--text);
+}
+
+.nav-link:hover::after,
+.nav-link.active::after {
+  width: 100%;
+}
+
+/* ─── THEME TOGGLE ──────────────────────────────────────────── */
+.theme-toggle {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  border: 1px solid var(--border);
+  background: transparent;
+  cursor: pointer;
+  display: grid;
+  place-items: center;
+  transition: border-color var(--transition), background var(--transition);
+  flex-shrink: 0;
+}
+
+.theme-toggle:hover {
+  background: var(--bg-hover);
+  border-color: var(--accent);
+}
+
+.theme-icon {
+  position: absolute;
+  font-size: 1rem;
+  line-height: 1;
+  transition: opacity 0.2s, transform 0.2s;
+  color: var(--accent);
+}
+
+[data-theme="dark"] .sun  { opacity: 0; transform: scale(0.5); }
+[data-theme="dark"] .moon { opacity: 1; transform: scale(1); }
+[data-theme="light"] .sun  { opacity: 1; transform: scale(1); }
+[data-theme="light"] .moon { opacity: 0; transform: scale(0.5); }
+
+/* ─── HERO ──────────────────────────────────────────────────── */
+.hero {
+  position: relative;
+  overflow: hidden;
+  min-height: 50vh;
+  display: flex;
+  align-items: center;
+  padding: clamp(4rem, 10vw, 8rem) clamp(1.5rem, 5vw, 4rem);
+}
+
+.hero::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse 60% 60% at 80% 50%, var(--accent-glow), transparent 70%);
+  pointer-events: none;
+}
+
+.hero-content {
+  position: relative;
+  z-index: 1;
+  max-width: 560px;
+}
+
+.hero-eyebrow {
+  font-size: 0.8rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 1.2rem;
+  font-weight: 400;
+}
+
+.hero-title {
+  font-size: clamp(3.5rem, 9vw, 7rem);
+  line-height: 1;
+  margin-bottom: 1.5rem;
+  letter-spacing: -0.03em;
+}
+
+.hero-title em {
+  font-style: italic;
+  color: var(--accent);
+}
+
+.hero-sub {
+  font-size: 1.05rem;
+  color: var(--text-muted);
+  max-width: 380px;
+  font-weight: 300;
+}
+
+/* decorative kanji */
+.hero-deco {
+  position: absolute;
+  right: clamp(1rem, 6vw, 5rem);
+  top: 50%;
+  transform: translateY(-50%);
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  line-height: 1;
+  pointer-events: none;
+  user-select: none;
+}
+
+.deco-char {
+  font-family: 'Shippori Mincho', serif;
+  font-size: clamp(6rem, 18vw, 16rem);
+  font-weight: 800;
+  color: var(--deco-color);
+  transition: color var(--transition);
+  display: block;
+  line-height: 0.9;
+}
+
+/* ─── SECTION TITLE ─────────────────────────────────────────── */
+.section-title {
+  font-size: clamp(1.6rem, 4vw, 2.4rem);
+  margin-bottom: 2.5rem;
+  letter-spacing: -0.02em;
+  position: relative;
+  padding-bottom: 0.75rem;
+}
+
+.section-title::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 2.5rem;
+  height: 2px;
+  background: var(--accent);
+}
+
+/* ─── MANGA SECTION ─────────────────────────────────────────── */
+.manga-section {
+  padding: clamp(3rem, 8vw, 6rem) clamp(1.5rem, 5vw, 4rem);
+}
+
+.manga-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 1.5rem;
+}
+
+/* ─── MANGA CARD ─────────────────────────────────────────────── */
+.manga-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  transition: border-color var(--transition), transform var(--transition), box-shadow var(--transition);
+}
+
+.manga-card:hover {
+  border-color: var(--accent-dim);
+  transform: translateY(-3px);
+  box-shadow: 0 12px 32px rgba(0,0,0,0.35);
+}
+
+/* Cover */
+.manga-cover {
+  width: 100%;
+  aspect-ratio: 2/3;
+  overflow: hidden;
+  background: var(--bg-hover);
+}
+
+.manga-cover img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.4s ease;
+}
+
+.manga-card:hover .manga-cover img {
+  transform: scale(1.04);
+}
+
+.placeholder-cover {
+  display: grid;
+  place-items: center;
+  aspect-ratio: 2/3;
+  background: repeating-linear-gradient(
+    45deg,
+    var(--bg-hover),
+    var(--bg-hover) 10px,
+    var(--bg) 10px,
+    var(--bg) 20px
+  );
+}
+
+.placeholder-text {
+  font-size: 0.75rem;
+  letter-spacing: 0.1em;
+  color: var(--text-faint);
+  text-transform: uppercase;
+}
+
+/* Info */
+.manga-info {
+  padding: 1.25rem 1.4rem 1.4rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.55rem;
+  flex: 1;
+}
+
+.manga-status {
+  font-size: 0.7rem;
+  font-weight: 500;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  padding: 0.2em 0.7em;
+  border-radius: 2px;
+  align-self: flex-start;
+}
+
+.status-active   { background: rgba(100, 200, 120, 0.15); color: #7dcc8e; }
+.status-hiatus   { background: rgba(200, 168, 75, 0.15);  color: var(--accent); }
+.status-complete { background: rgba(100, 140, 200, 0.15); color: #88aadd; }
+
+.manga-title {
+  font-size: 1.25rem;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  line-height: 1.2;
+}
+
+.manga-author {
+  font-size: 0.8rem;
+  color: var(--text-muted);
+  font-weight: 400;
+}
+
+.manga-desc {
+  font-size: 0.875rem;
+  color: var(--text-muted);
+  line-height: 1.55;
+  flex: 1;
+}
+
+.manga-meta {
+  display: flex;
+  gap: 1rem;
+  font-size: 0.75rem;
+  color: var(--text-muted);
+  padding-top: 0.25rem;
+  border-top: 1px solid var(--border);
+  margin-top: 0.25rem;
+}
+
+/* ─── BUTTON ─────────────────────────────────────────────────── */
+.btn-primary {
+  display: inline-block;
+  margin-top: 0.5rem;
+  padding: 0.55rem 1.2rem;
+  background: var(--accent);
+  color: #111;
+  text-decoration: none;
+  font-weight: 500;
+  font-size: 0.875rem;
+  letter-spacing: 0.04em;
+  border-radius: var(--radius);
+  border: none;
+  cursor: pointer;
+  align-self: flex-start;
+  transition: background var(--transition), transform var(--transition);
+}
+
+.btn-primary:hover {
+  background: #d4b05a;
+  transform: translateX(2px);
+}
+
+.btn-primary:active {
+  transform: translateX(0);
+}
+
+/* ─── ABOUT ──────────────────────────────────────────────────── */
+.about-section {
+  padding: clamp(3rem, 8vw, 6rem) clamp(1.5rem, 5vw, 4rem);
+  border-top: 1px solid var(--border);
+}
+
+.about-inner {
+  max-width: 640px;
+}
+
+.about-inner p {
+  color: var(--text-muted);
+  line-height: 1.8;
+  margin-bottom: 1rem;
+  font-size: 0.95rem;
+}
+
+/* ─── FOOTER ─────────────────────────────────────────────────── */
+.site-footer {
+  padding: 2.5rem clamp(1.5rem, 5vw, 4rem);
+  border-top: 1px solid var(--border);
+  font-size: 0.8rem;
+  color: var(--text-muted);
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+}
+
+.footer-small {
+  color: var(--text-faint);
+  font-size: 0.72rem;
+}
+
+/* ─── RESPONSIVE ─────────────────────────────────────────────── */
+@media (max-width: 640px) {
+  .nav-links { display: none; }
+  .hero-deco { display: none; }
+  .manga-grid { grid-template-columns: 1fr; }
+}
+
+/* ─── ANIMATIONS ─────────────────────────────────────────────── */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.hero-content  { animation: fadeUp 0.6s ease both; }
+.section-title { animation: fadeUp 0.5s ease both 0.1s; }
+.manga-card    { animation: fadeUp 0.5s ease both; }
+.manga-card:nth-child(2) { animation-delay: 0.1s; }
+.manga-card:nth-child(3) { animation-delay: 0.2s; }

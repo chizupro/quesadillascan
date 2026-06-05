@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="es" data-theme="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Título del Manga — Scanlation</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@400;600;800&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="manga.css" />
+</head>
+<body>
+
+  <!-- HEADER (mismo que index) -->
+  <header class="site-header">
+    <a href="index.html" class="logo">
+      <span class="logo-jp">翻訳</span>
+      <span class="logo-text">Scanlation</span>
+    </a>
+    <nav class="nav-links">
+      <a href="index.html" class="nav-link">Inicio</a>
+      <a href="index.html#mangas" class="nav-link active">Mangas</a>
+    </nav>
+    <button class="theme-toggle" id="themeToggle" aria-label="Cambiar tema">
+      <span class="theme-icon sun">☀</span>
+      <span class="theme-icon moon">◗</span>
+    </button>
+  </header>
+
+  <!-- BREADCRUMB -->
+  <div class="breadcrumb">
+    <a href="index.html">Inicio</a>
+    <span>›</span>
+    <a href="index.html#mangas">Mangas</a>
+    <span>›</span>
+    <span>Título del Manga</span>
+  </div>
+
+  <!-- MANGA INFO -->
+  <section class="manga-detail">
+    <div class="detail-cover">
+      <div class="placeholder-cover detail-placeholder">
+        <span class="placeholder-text">Portada</span>
+      </div>
+    </div>
+    <div class="detail-info">
+      <span class="manga-status status-active">En curso</span>
+      <h1 class="detail-title">Título del Manga</h1>
+      <p class="detail-author">Autor · Año · Género</p>
+      <p class="detail-desc">
+        Sinopsis completa del manga. Edita este párrafo con la descripción real del título que estás traduciendo. Puedes agregar tantos párrafos como necesites.
+      </p>
+      <div class="detail-tags">
+        <span class="tag">Acción</span>
+        <span class="tag">Aventura</span>
+        <span class="tag">Fantasía</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- CHAPTER LIST -->
+  <section class="chapter-section">
+    <h2 class="section-title">Capítulos</h2>
+    <ul class="chapter-list" id="chapterList">
+
+      <li class="chapter-item">
+        <a href="reader.html?manga=titulo&cap=12" class="chapter-link">
+          <span class="chapter-num">Cap. 12</span>
+          <span class="chapter-name">El camino sin retorno</span>
+          <span class="chapter-date">2 jun 2025</span>
+        </a>
+      </li>
+
+      <li class="chapter-item">
+        <a href="reader.html?manga=titulo&cap=11" class="chapter-link">
+          <span class="chapter-num">Cap. 11</span>
+          <span class="chapter-name">La decisión</span>
+          <span class="chapter-date">18 may 2025</span>
+        </a>
+      </li>
+
+      <li class="chapter-item">
+        <a href="reader.html?manga=titulo&cap=10" class="chapter-link">
+          <span class="chapter-num">Cap. 10</span>
+          <span class="chapter-name">Encuentro inesperado</span>
+          <span class="chapter-date">4 may 2025</span>
+        </a>
+      </li>
+
+      <li class="chapter-item">
+        <a href="reader.html?manga=titulo&cap=1" class="chapter-link">
+          <span class="chapter-num">Cap. 1</span>
+          <span class="chapter-name">Comienzo</span>
+          <span class="chapter-date">10 ene 2025</span>
+        </a>
+      </li>
+
+    </ul>
+  </section>
+
+  <footer class="site-footer">
+    <p>Scanlation · Traducciones al español · <span id="year"></span></p>
+    <p class="footer-small">Proyecto fan sin fines de lucro.</p>
+  </footer>
+
+  <script src="main.js"></script>
+</body>
+</html>
